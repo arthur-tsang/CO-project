@@ -1,0 +1,44 @@
+Email from Tom Dame (Feb 25):
+
+In advance of the 2nd stats workshop on Friday, I wanted to give you some guidance on the rotation curve fitting you will be doing. I think I can do this by email instead of arranging another meeting this week. The rotation curve is the Galactic circular velocity in km/s given as a function of Galactic radius in kpc. Just for completeness I suggest you first fit two simple 1-parameter models: a point mass in the center and a uniform density sphere. You probably won’t be surprised that these don’t fit well, but you should show them in your report (and maybe your talk?). A much more realistic model is that of an exponential disk, since the light in external spiral galaxies are observed to drop exponentially with radius. The functional form of the expo disk is given in Section 3.1.2 of Xin & Zheng (2013) attached (also in our Dropbox folder). Converted to “Galactic units” (R-kpc, surface density-Mo/pc2, circular velocity- km/s) we have:
+
+Vc(R) = 7.35*sqrt( Rd * So * Bess )   (you should work this out)
+
+where
+
+Bess = y^2 * [ Io(y)*Ko(y) - I1(y)K1(y) ]
+y = R/(2*Rd)
+
+and I and K are Bessel functions.
+
+The 2 free parameters of the model are the central mass surface density So(Mo/pc^2), and the scale radius Rd(kpc). This is just a 2-parameter fit, so you could do this by a simple chi-sqr grid search, or however else you want to do it. Such fitting will be discussed at the meeting on Friday.
+
+If the outer Galaxy masers are included in the rotation curve--and perhaps some other data farther out in radius--you may find that you can get a better fit by adding another component to the Galactic mass model — a spherical dark matter halo (see Section 3.1.3 in Xin & Zheng (2013). Again in Galactic units:
+
+Vc(R) = (0.0021)*sqrt( M/R), where M is the mass enclosed with R:
+
+M(R) = 4*pi*po*(Rh^2)*R*(1.e9)*[ 1 - (Rh/R)*arctan(R/Rh) ]
+
+The 2 free parameters are the central space density po(Mo/pc3) and the scale radius, Rh(kpc). 
+
+To add the dark matter halo you will need to do a 4-parameter fit.
+
+################################################################################
+
+Last position at L=13.88 (Feb 28):
+
+I let the telescope integrate on L=13.88, B=0 for over an hour after you left, until it fell below 20 degrees elevation. The total integration time was 1h 21m. The summed scan is attached, along with an archival scan at essentially the same position (L=13.875).  
+
+The requested rms in each scan is 0.15 K, so the expected rms for the sum of 15 such scans is 0.15/sqrt(15) = 0.04 K. The measured rms printed at the bottom of the scan is 0.068 K. It’s not surprising that the measured rms is higher than expected since it is computed over so few baseline channels, and some of the channels that we used for baseline (near v~100 km/s) may have low-level emission in them. Even taking the higher rms value measured, the peak at 151.74 km/s is at about 6-sigma. The archival spectrum shows the same feature, so we can conclude that it is real. 
+
+################################################################################
+
+Two calibration corrections (Mar 5):
+
+BEAM EFFICIENCY
+As we discussed, only about 82% of the power we detect is coming from the main beam. The usual assumption is that the source we are observing just fills the main beam and there is no emission elsewhere (i.e., in the sidelobes). Based on that assumption you need to divide your intensities by 0.82 to convert Antenna Temperature units to what is called Main Beam Brightness Temperature (K). This correction is always made. 
+
+UPPER SIDEBAND SUPRESSION
+We had a problem with the sideband generator that only allowed us to tune out the unwanted upper sideband signal to a level of 10% (10 dB). So, as with the correction above, only about 90% of our power was from the lower sideband that contains the CO line. Consequently we need to divide our Main Beam brightness Temperatures by 0.9.
+
+The total scaling is thus 1.35. You don’t really need to scale all the spectra by that factor. Since you are just using the spectra to compute column densities, you can just as well scale up the X factor, so X = 2.0*1.35 = 2.7e20 cm-2/(K km/s).
