@@ -43,3 +43,6 @@ def diskhalo_fit(r, rd, sig0, rh, rhoh):
 
 def total_fit(r, rb, mb, rd, sig0, rh, rhoh):
     return np.sqrt(bulge_fit(r, rb, mb)**2 + expdisk_fit(r, rd, sig0)**2 + halo_fit(r,rh,rhoh)**2)
+
+def double_gaussian(x, mean, sigma, norm, mean2, sigma2, norm2):
+    return norm * np.exp(-(x-mean)**2/(2*sigma**2)) + norm2 * np.exp(-(x-mean2)**2/(2*sigma2**2))
